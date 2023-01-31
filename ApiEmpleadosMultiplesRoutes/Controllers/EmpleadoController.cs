@@ -24,5 +24,25 @@ namespace ApiEmpleadosMultiplesRoutes.Controllers
         {
             return this.repo.FindEmpleado(id);
         }
+        [HttpGet]
+        [Route("[action]")]
+        public ActionResult<List<string>> Oficios()
+        {
+            return this.repo.GetOficios();
+        }
+        [HttpGet]
+        [Route("[action]/{oficio}")]
+        public ActionResult<List<Empleado>> EmpleadosOficio(string oficio)
+        {
+            List<Empleado> empleados = this.repo.GetEmpleadosOficio(oficio);
+                return empleados;
+        }
+        [HttpGet]
+        [Route("[action]/{salario}")]
+        public ActionResult<List<Empleado>> EmpleadosSalario (int salario)
+        {
+            List<Empleado> empleados= this.repo.GetEmpleadosSalario(salario);
+            return empleados;
+        }
     }
 }
